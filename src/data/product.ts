@@ -5,19 +5,19 @@ import { Iproduct } from "@/types/product";
 export const getAllProducts = async ({}: {}): Promise<
   IApiResponse<Iproduct[]>
 > => {
-  const res = await fetch(
-    `${process.env.API_BASE_URL}${productApi.getProducts}?all=true`,
-    {
-      next: {
-        tags: ["product/all"],
-      },
-    }
-  );
+  // const res = await fetch(
+  //   `${process.env.API_BASE_URL}${productApi.getProducts}?all=true`,
+  //   {
+  //     next: {
+  //       tags: ["product/all"],
+  //     },
+  //   }
+  // );
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
+  // if (!res.ok) {
+  // This will activate the closest `error.js` Error Boundary
+  //   throw new Error("Failed to fetch data");
+  // }
 
   return {
     data: dummyProducts,
