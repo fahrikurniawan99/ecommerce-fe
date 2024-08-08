@@ -1,10 +1,8 @@
 import { productApi } from "@/constant/api";
 import { IApiResponse } from "@/types/api";
-import { Iproduct } from "@/types/product";
+import { IProduct } from "@/types/product";
 
-export const getAllProducts = async ({}: {}): Promise<
-  IApiResponse<Iproduct[]>
-> => {
+export const getAllProducts = async (): Promise<IApiResponse<IProduct[]>> => {
   // const res = await fetch(
   //   `${process.env.API_BASE_URL}${productApi.getProducts}?all=true`,
   //   {
@@ -26,7 +24,7 @@ export const getAllProducts = async ({}: {}): Promise<
   };
 };
 
-export const dummyProducts: Iproduct[] = [
+export const dummyProducts: IProduct[] = [
   {
     id: "66b472f4601754781e881d80",
     name: "LAPTOP ACER ASPIRE 1000 A314 RAM 4GB SSD 256GB",

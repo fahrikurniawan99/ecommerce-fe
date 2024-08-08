@@ -1,12 +1,11 @@
-import { COLORS } from "@/constant/color";
+import { ProductSearchInput } from "@/components/product/product-search-input";
+import { BRAND_NAME } from "@/constant/brand";
+import { NAVBAR_ITEMS, NAVBAR_MENU_ID } from "@/constant/menu";
 import { cn } from "@/lib/utils";
 import { Container } from "../container";
-import { BRAND_NAME } from "@/constant/brand";
-import { Input } from "@/components/ui/input";
-import { TOP_MENUS } from "@/constant/menu";
-import { ToggleMenu } from "./toggle-menu";
+import { ToggleMenu } from "./navbar-toggle";
 
-export const AppBar = () => {
+export const Navbar = () => {
   return (
     <nav className={cn(`bg-primary-color`, "w-full text-slate-100")}>
       <Container className="sm:flex justify-between items-center py-5">
@@ -14,23 +13,20 @@ export const AppBar = () => {
           <h1 className="font-bold text-lg">{BRAND_NAME}</h1>
           <ToggleMenu />
         </div>
-        <Input
-          className="sm:w-fit mt-5 sm:mt-0 bg-white"
-          placeholder="Cari produk"
-        />
-        <AppBarMenu />
+        <ProductSearchInput />
+        <NavbarMenu />
       </Container>
     </nav>
   );
 };
 
-export const AppBarMenu = () => {
+export const NavbarMenu = () => {
   return (
     <ul
-      id="app-menu"
+      id={NAVBAR_MENU_ID}
       className="sm:flex items-center gap-5 space-y-3 sm:space-y-0 mt-3 sm:mt-0 h-0 sm:h-fit transition-all duration-500 overflow-hidden"
     >
-      {TOP_MENUS.map((menu, index) => {
+      {NAVBAR_ITEMS.map((menu, index) => {
         return (
           <li key={index} className="flex items-center gap-2">
             {menu.icon} {menu.name}

@@ -1,8 +1,7 @@
-import { ReactNode } from "react";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { GrTransaction } from "react-icons/gr";
 
-export const TOP_MENUS = [
+export const NAVBAR_ITEMS = [
   {
     name: "Sign in",
     url: "/sign-in",
@@ -19,3 +18,5 @@ export const TOP_MENUS = [
     icon: <GrTransaction />,
   },
 ];
+
+export const NAVBAR_MENU_ID = "navbar-menu";
