@@ -13,7 +13,7 @@ export const ProductListAll = (props: ProductListAllProps) => {
 
   return (
     <>
-      <div className="grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 grid gap-3 mt-2s">
+      <div className="grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 grid gap-3 mt-3">
         {productPagination.data.map((product, index) => {
           return <ProductCard key={index} {...product} />;
         })}

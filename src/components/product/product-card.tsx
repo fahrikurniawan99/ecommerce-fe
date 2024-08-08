@@ -4,9 +4,7 @@ import { formatNumberToRupiah } from "@/lib/numbers";
 import { IProduct } from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
-import {
-    MdAddShoppingCart
-} from "react-icons/md";
+import { MdAddShoppingCart } from "react-icons/md";
 import { Button } from "../ui/button";
 
 type ProductCardProps = {} & IProduct;
@@ -29,8 +27,9 @@ export const ProductCard = (props: ProductCardProps) => {
           {formatNumberToRupiah(props.price)}
         </h2>
         <div className="flex">
-          <Button className="mt-2 ml-auto bg-orange-600 justify-end hover:bg-orange-500">
+          <Button className="mt-2 ml-auto bg-orange-500 hover:bg-orange-400 xl:w-full xl:gap-2">
             <MdAddShoppingCart className="text-xl" />
+            <span className="hidden xl:inline-block">Tambahkan</span>{" "}
           </Button>
         </div>
       </div>
