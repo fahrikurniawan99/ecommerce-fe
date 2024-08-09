@@ -24,16 +24,21 @@ export const AddToCart = ({ product }: { product: IProduct }) => {
 
   const addItemToCart = () => {
     openAlert();
-    const cartItem: ICartItem = { product, qty: 1 };
-    localStorageCart.addCartItem(cartItem);
   };
-
-  const goToCartPage = () => {
-    router.push("/cart");
-  };
+  const cartItem: ICartItem = { product, qty: 1 };
 
   const closeAlert = () => setIsOpen(false);
   const openAlert = () => setIsOpen(true);
+
+  const goToCartPage = () => {
+    localStorageCart.addCartItem(cartItem);
+    router.push("/cart");
+  };
+
+  const continueShopping = () => {
+    localStorageCart.addCartItem(cartItem);
+    closeAlert();
+  };
 
   return (
     <>
@@ -50,7 +55,9 @@ export const AddToCart = ({ product }: { product: IProduct }) => {
                   <FaCheck className="m-auto text-xs text-white" />
                 </div>
               )}
-              {localStorageCart.isItemExist(product.id) ? "Gagal Memproses" : "Berhasil"}
+              {localStorageCart.isItemExist(product.id)
+                ? "Gagal Memproses"
+                : "Berhasil"}
             </AlertDialogTitle>
             <AlertDialogDescription>
               {localStorageCart.isItemExist(product.id)
@@ -59,7 +66,7 @@ export const AddToCart = ({ product }: { product: IProduct }) => {
             </AlertDialogDescription>
             <AlertDialogDescription className="flex justify-end pt-4 gap-3">
               <Button onClick={goToCartPage}>Lihat Keranjang</Button>
-              <Button onClick={closeAlert} variant={"outline"}>
+              <Button onClick={continueShopping} variant={"outline"}>
                 Lanjutkan belanja
               </Button>
             </AlertDialogDescription>
