@@ -1,7 +1,15 @@
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { GrTransaction } from "react-icons/gr";
 
-export const NAVBAR_ITEMS = [
+type NavbarItemName = "Sign in" | "Cart" | "Order";
+
+type NavbarItem = {
+  name: NavbarItemName;
+  url: string;
+  icon: JSX.Element;
+};
+
+export const NAVBAR_ITEMS: NavbarItem[] = [
   {
     name: "Sign in",
     url: "/sign-in",

@@ -4,6 +4,7 @@ import { formatNumberToRupiah } from "@/lib/numbers";
 import { IProduct } from "@/types/product";
 import Image from "next/image";
 import { AddToCart } from "../cart/add-to-cart";
+import { CartProvider } from "@/hooks/use-cart";
 
 type ProductCardProps = {} & IProduct;
 
@@ -24,7 +25,7 @@ export const ProductCard = (props: ProductCardProps) => {
         <h2 className="text-orange-600 font-medium">
           {formatNumberToRupiah(props.price)}
         </h2>
-        <AddToCart />
+        <AddToCart product={props} />
       </div>
     </div>
   );

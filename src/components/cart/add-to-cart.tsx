@@ -12,13 +12,20 @@ import {
   AlertDialogTitle,
 } from "../ui/alert-dialog";
 import { Button, buttonVariants } from "../ui/button";
+import { IProduct } from "@/types/product";
+import { useCartLocalStorage } from "@/hooks/use-cart";
+import { ICartItem } from "@/types/cart";
+import { FaX } from "react-icons/fa6";
 
-export const AddToCart = () => {
+export const AddToCart = ({ product }: { product: IProduct }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const localStorageCart = useCartLocalStorage();
 
   const addItemToCart = () => {
     openAlert();
+    const cartItem: ICartItem = { product, qty: 1 };
+    localStorageCart.addCartItem(cartItem);
   };
 
   const goToCartPage = () => {
@@ -34,13 +41,21 @@ export const AddToCart = () => {
         <AlertDialogContent className="w-fit">
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
-              <div className="w-6 rounded-full flex aspect-square bg-primary-color">
-                <FaCheck className="m-auto text-xs text-white" />
-              </div>
-              Sukses
+              {localStorageCart.isItemExist(product.id) ? (
+                <div className="w-6 rounded-full flex aspect-square bg-red-500">
+                  <FaX className="m-auto text-xs text-white" />
+                </div>
+              ) : (
+                <div className="w-6 rounded-full flex aspect-square bg-primary-color">
+                  <FaCheck className="m-auto text-xs text-white" />
+                </div>
+              )}
+              {localStorageCart.isItemExist(product.id) ? "Gagal Memproses" : "Berhasil"}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              Produk berhasil ditambahkan ke keranjang
+              {localStorageCart.isItemExist(product.id)
+                ? "Produk sudah ada pada keranjang"
+                : "Produk berhasil ditambahkan ke keranjang"}
             </AlertDialogDescription>
             <AlertDialogDescription className="flex justify-end pt-4 gap-3">
               <Button onClick={goToCartPage}>Lihat Keranjang</Button>
