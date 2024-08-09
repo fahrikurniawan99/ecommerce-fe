@@ -2,6 +2,7 @@ import { ProductListAll } from "@/components/product/product-list-all";
 import { Container } from "@/components/shared/container";
 import { Navbar } from "@/components/shared/navbar";
 import { getAllProducts } from "@/data/product";
+import Link from "next/link";
 
 export default async function Home() {
   const products = await getAllProducts();
