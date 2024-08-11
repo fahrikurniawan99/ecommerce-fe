@@ -4,7 +4,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <Dialog open={true}>
+    <Dialog defaultOpen={true} >
       <DialogContent>
         <FormCheckout />
       </DialogContent>

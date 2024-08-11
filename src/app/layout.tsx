@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { CartProvider } from "@/hooks/use-cart";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import { Navbar } from "@/components/shared/navbar";
 
 const fontSans = FontSans({
