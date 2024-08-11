@@ -7,7 +7,7 @@ import React from "react";
 export default function page() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="text-gray-800">
         <Container className="mt-4 max-w-[700px]">
           <CartListItem />

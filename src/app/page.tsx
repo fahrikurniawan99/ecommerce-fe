@@ -8,7 +8,6 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar />
       <main className="text-gray-800">
         <Container className="mt-4">
           <h1 className="font-bold text-lg">Semua Produk</h1>

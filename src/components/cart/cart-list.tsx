@@ -8,6 +8,7 @@ import { FaMinus, FaPlus } from "react-icons/fa6";
 import { Container } from "../shared/container";
 import { Button } from "../ui/button";
 import { ClearCartAlert } from "./clear-cart";
+import Link from "next/link";
 
 export const CartListItem = () => {
   const localStorageCart = useCartLocalStorage();
@@ -27,7 +28,9 @@ export const CartListItem = () => {
         </Button>
       </div>
       <div className="flex justify-between mt-3 mb-5 ">
-        <p className="text-gray-500">{localStorageCart.getTotalItems()} Items</p>
+        <p className="text-gray-500">
+          {localStorageCart.getTotalItems()} Items
+        </p>
         <ClearCartAlert />
       </div>
       <div className="text-gray-800 space-y-5 mt-5">
@@ -89,6 +92,7 @@ export const CartListItem = () => {
           </div>
           <div className="flex">
             <Button
+              onClick={() => router.push("/checkout")}
               disabled={localStorageCart.getCartTotalPrice() == 0}
               className="bg-primary-color hover:bg-primary-color/90"
             >
