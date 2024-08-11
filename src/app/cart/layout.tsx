@@ -2,11 +2,9 @@ import { PropsWithChildren, ReactNode } from "react";
 
 const CartLayout = ({
   children,
-  modal,
-}: { modal: ReactNode } & PropsWithChildren) => {
+}: { } & PropsWithChildren) => {
   return (
     <section className="">
-      {modal}
       {children}
     </section>
   );

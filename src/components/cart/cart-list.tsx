@@ -9,6 +9,7 @@ import { Container } from "../shared/container";
 import { Button } from "../ui/button";
 import { ClearCartAlert } from "./clear-cart";
 import Link from "next/link";
+import { FormCheckout } from "../checkout/form";
 
 export const CartListItem = () => {
   const localStorageCart = useCartLocalStorage();
@@ -91,13 +92,7 @@ export const CartListItem = () => {
             </p>
           </div>
           <div className="flex">
-            <Button
-              onClick={() => router.push("/checkout")}
-              disabled={localStorageCart.getCartTotalPrice() == 0}
-              className="bg-primary-color hover:bg-primary-color/90"
-            >
-              Lanjutkan
-            </Button>
+          <FormCheckout />
           </div>
         </Container>
       </div>
