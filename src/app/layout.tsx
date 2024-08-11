@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { CartProvider } from "@/hooks/use-cart";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,6 +29,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+         <ToastContainer />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

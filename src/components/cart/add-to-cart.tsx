@@ -46,23 +46,13 @@ export const AddToCart = ({ product }: { product: IProduct }) => {
         <AlertDialogContent className="w-fit">
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
-              {localStorageCart.isItemExist(product.id) ? (
-                <div className="w-6 rounded-full flex aspect-square bg-red-500">
-                  <FaX className="m-auto text-xs text-white" />
-                </div>
-              ) : (
-                <div className="w-6 rounded-full flex aspect-square bg-primary-color">
-                  <FaCheck className="m-auto text-xs text-white" />
-                </div>
-              )}
-              {localStorageCart.isItemExist(product.id)
-                ? "Gagal Memproses"
-                : "Berhasil"}
+              <div className="w-6 rounded-full flex aspect-square bg-primary-color">
+                <FaCheck className="m-auto text-xs text-white" />
+              </div>
+              Berhasil
             </AlertDialogTitle>
             <AlertDialogDescription>
-              {localStorageCart.isItemExist(product.id)
-                ? "Produk sudah ada pada keranjang"
-                : "Produk berhasil ditambahkan ke keranjang"}
+              Produk berhasil ditambahkan ke keranjang{" "}
             </AlertDialogDescription>
             <AlertDialogDescription className="flex justify-end pt-4 gap-3">
               <Button onClick={goToCartPage}>Lihat Keranjang</Button>
@@ -75,6 +65,10 @@ export const AddToCart = ({ product }: { product: IProduct }) => {
       </AlertDialog>
       <div className="flex">
         <Button
+          disabled={
+            product.countInStock <= 0 ||
+            localStorageCart.isItemExist(product.id)
+          }
           onClick={addItemToCart}
           className={buttonVariants({
             variant: "outline",
@@ -83,7 +77,11 @@ export const AddToCart = ({ product }: { product: IProduct }) => {
           })}
         >
           <MdAddShoppingCart className="text-xl" />
-          <span className="hidden xl:inline-block">Tambahkan</span>
+          <span className="hidden xl:inline-block">
+            {localStorageCart.isItemExist(product.id)
+              ? "Sudah Ditambahkan"
+              : "Tambahkan ke Keranjang"}
+          </span>
         </Button>
       </div>
     </>

@@ -3,6 +3,7 @@ import { ICartItem } from "@/types/cart";
 import {
   createContext,
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -19,6 +20,7 @@ interface ICartContext {
   clearCart: () => void;
   isItemExist: (id: string) => boolean;
   addQty: (id: string) => void;
+  reduceQty: (id: string) => void;
 }
 const CartContext = createContext<ICartContext>({} as ICartContext);
 
@@ -34,6 +36,17 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     const newCartItems = cartItems.map((item: ICartItem) => {
       if (item.product.id === id) {
         return { ...item, qty: item.qty + 1 };
+      }
+      return item;
+    });
+    setCartItems(newCartItems);
+  };
+
+  const reduceQty = (id: string) => {
+    const cartItems = carts;
+    const newCartItems = cartItems.map((item: ICartItem) => {
+      if (item.product.id === id) {
+        return { ...item, qty: item.qty - 1 };
       }
       return item;
     });
@@ -81,9 +94,12 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     localStorage.removeItem("cart");
   };
 
-  const isItemExist = (id: string) => {
-    return carts.some((item: ICartItem) => item.product.id === id);
-  };
+  const isItemExist = useCallback(
+    (id: string) => {
+      return carts.some((item: ICartItem) => item.product.id === id);
+    },
+    [carts]
+  );
 
   useEffect(() => {
     const cartData = getCartItems();
@@ -101,6 +117,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     clearCart,
     isItemExist,
     addQty,
+    reduceQty
   };
 
   return <CartContext.Provider value={method}>{children}</CartContext.Provider>;
